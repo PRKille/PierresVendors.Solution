@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="jumbotron">
+  <h2>This is where you can add a new account!</h2>
+  <h6>Just fill out the form and click the "Add" button!</h6>
+</div>
+<div class="card">
+  <form action="/vendors" method="post">
+  <label for="name">Name of Vendor:</label>
+  <input type="text" id="name" name="name">
+  <label for="description">Quick description of the Client</label>
+  <input type="text" id="description" name="description">
+  <button type="submit">Add!</button>
+  </form>
+</div>
