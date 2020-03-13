@@ -34,7 +34,7 @@ namespace PierresVendors.Models
 
     public static Vendor Find(int id)
     {
-      int index = _vendors.FindIndex(artist => artist.Id == id);
+      int index = _vendors.FindIndex(vendor => vendor.Id == id);
       return _vendors[index];
     }
 
