@@ -7,30 +7,30 @@ namespace PierresVendors.Controllers
 {
   public class OrdersController : Controller
   {
-    [HttpGet("/orders/{orderId}/albums/new")]
+    [HttpGet("/vendors/{vendorId}/orders/new")]
     public ActionResult New(int id)
     {
       Order order = Order.Find(id);
       return View(order);
     }
 
-    [HttpGet("/orders/{orderId}/albums/{albumId}")]
-    public ActionResult Show(int orderID, int albumID)
+    [HttpGet("/vendors/{vendorId}/orders/{orderId}")]
+    public ActionResult Show(int orderID, int vendorID)
     {
-      Album album = Album.Find(albumID);
+      Vendor vendor = Vendor.Find(vendorID);
       Order order = Order.Find(orderID);
       Dictionary <string, object> model = new Dictionary<string, object>();
-      model.Add("album", album);
+      model.Add("vendor", vendor);
       model.Add("order", order);
       return View(model);
     }
 
-    [HttpPost("/orders/{orderId}/albums/{albumId}")]
-    public ActionResult Delete(int albumID)
+    [HttpPost("/vendors/{vendorId}/orders/{orderId}")]
+    public ActionResult Delete(int orderID)
     {
-      List<Order> albums = Order.GetAll();
-      int indexToDelete = albums.FindIndex(album => album.Id == albumID);
-      albums.RemoveAt(indexToDelete);
+      List<Order> orders = Order.GetAll();
+      int indexToDelete = orders.FindIndex(order => order.Id == orderID);
+      orders.RemoveAt(indexToDelete);
       return RedirectToAction("Show", "Order");
     }
   }
