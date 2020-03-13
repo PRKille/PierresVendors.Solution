@@ -39,7 +39,7 @@ namespace PierresVendors.Controllers
     }
 
     [HttpPost("/vendors/{vendorId}/orders")]
-    public ActionResult Create(int vendorId, string title, string description, int price, string day, bool reoccurring)
+    public ActionResult Create(int vendorId, string title, string description, int price, string day, string reoccurring)
     {
       Dictionary<string, object> model = new Dictionary<string, object>();
       Vendor selectedVendor = Vendor.Find(vendorId);
@@ -47,7 +47,7 @@ namespace PierresVendors.Controllers
       selectedVendor.AddOrder(newOrder);
       List<Order> vendorOrders = selectedVendor.Orders;
       model.Add("vendor", selectedVendor);
-      model.Add("order", vendorOrders);
+      model.Add("orders", vendorOrders);
       return View("Show", model);
     }
   }

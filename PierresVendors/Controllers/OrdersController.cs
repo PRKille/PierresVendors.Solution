@@ -8,10 +8,10 @@ namespace PierresVendors.Controllers
   public class OrdersController : Controller
   {
     [HttpGet("/vendors/{vendorId}/orders/new")]
-    public ActionResult New(int id)
+    public ActionResult New(int vendorId)
     {
-      Order order = Order.Find(id);
-      return View(order);
+      Vendor vender = Vendor.Find(vendorId);
+      return View(vender);
     }
 
     [HttpGet("/vendors/{vendorId}/orders/{orderId}")]
@@ -21,7 +21,7 @@ namespace PierresVendors.Controllers
       Order order = Order.Find(orderID);
       Dictionary <string, object> model = new Dictionary<string, object>();
       model.Add("vendor", vendor);
-      model.Add("order", order);
+      model.Add("orders", order);
       return View(model);
     }
 
