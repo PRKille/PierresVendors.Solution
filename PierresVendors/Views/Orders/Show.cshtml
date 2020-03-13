@@ -17,4 +17,9 @@
   {
     <h5>@Model["orders"].Day.</h5>
   }
+  <form action='/vendors/@Model["vendor"].Id/orders/@Model["orders"].Id' method="post">
+  <input type="hidden" name="orderID" value='@Model["orders"].Id'>
+  <input type="hidden" name="vendorID" value='@Model["vendor"].Id'>
+  <button type="submit">Delete Order</button>
+  </form>
 </div>
