@@ -9,21 +9,22 @@ namespace PierresVendors.Models
     public string Description {get;set;}
     public int Price {get;set;}
     public string Day {get;set;}
-    public bool Reoccurring {get;set;}
+    public string Reoccurring {get;set;}
     public int Id {get;}
     private static int _count = 0;
 
     private static List<Order> _orders = new List<Order> {};
 
-    public Order(string title, string description, int price, string day, bool reoccuring)
+    public Order(string title, string description, int price, string day, string reoccurring)
     {
       Title = title;
       Description = description;
       Price = price;
       Day = day;
-      Reoccurring = reoccuring;
+      Reoccurring = reoccurring;
       _orders.Add(this);
-      Id = _count++;
+      Id = _count;
+      _count++;
     }
 
     public static List<Order> GetAll()
