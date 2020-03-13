@@ -19,7 +19,7 @@ namespace PierresVendors.Models
       Description = description;
       _vendors.Add(this);
       Id = _count++;
-      Albums = new List<Album>{};
+      Orders = new List<Order>{};
     }
 
     public static List<Vendor> GetAll()
