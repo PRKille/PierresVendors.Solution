@@ -5,12 +5,12 @@ namespace PierresVendors.Models
 {
   public class Order
   {
-    public string Title { get; set; }
-    public string Description { get; set; }
-    public int Price { get; set; }
-    public string Day { get; set; }
-    public bool Reoccurring { get; set; }
-    public int Id { get; }
+    public string Title {get;set;}
+    public string Description {get;set;}
+    public int Price {get;set;}
+    public string Day {get;set;}
+    public bool Reoccurring {get;set;}
+    public int Id {get;}
     private static int _count = 0;
 
     private static List<Order> _orders = new List<Order> {};
