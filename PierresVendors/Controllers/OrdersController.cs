@@ -10,8 +10,8 @@ namespace PierresVendors.Controllers
     [HttpGet("/vendors/{vendorId}/orders/new")]
     public ActionResult New(int vendorId)
     {
-      Vendor vender = Vendor.Find(vendorId);
-      return View(vender);
+      Vendor vendor = Vendor.Find(vendorId);
+      return View(vendor);
     }
 
     [HttpGet("/vendors/{vendorId}/orders/{orderId}")]
@@ -26,12 +26,15 @@ namespace PierresVendors.Controllers
     }
 
     [HttpPost("/vendors/{vendorId}/orders/{orderId}")]
-    public ActionResult Delete(int orderID)
+    public ActionResult Delete(int orderID, int vendorID)
     {
+      List<Vendor> vendors = Vendor.GetAll();
+      int vendorIndexToDelet = vendors[vendorID].Orders.FindIndex(order => order.Id == orderID);
       List<Order> orders = Order.GetAll();
-      int indexToDelete = orders.FindIndex(order => order.Id == orderID);
-      orders.RemoveAt(indexToDelete);
-      return RedirectToAction("Show", "Order");
+      int orderIndexToDelete = orders.FindIndex(order => order.Id == orderID);
+      vendors[vendorID].Orders.RemoveAt(vendorIndexToDelet);
+      orders.RemoveAt(orderIndexToDelete);
+      return RedirectToAction($"Show({vendorID})", "Vendors");
     }
   }
 }

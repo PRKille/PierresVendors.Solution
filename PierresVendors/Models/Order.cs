@@ -31,12 +31,7 @@ namespace PierresVendors.Models
     {
       return _orders;
     }
-
-    public static void ClearAll()
-    {
-      _orders.Clear();
-    }
-
+    
     public static Order Find(int id)
     {
       int index = _orders.FindIndex(order => order.Id == id);

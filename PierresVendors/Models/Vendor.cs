@@ -27,11 +27,6 @@ namespace PierresVendors.Models
       return _vendors;
     }
 
-    public static void ClearAll()
-    {
-      _vendors.Clear();
-    }
-
     public static Vendor Find(int id)
     {
       int index = _vendors.FindIndex(vendor => vendor.Id == id);
